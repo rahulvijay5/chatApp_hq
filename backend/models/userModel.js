@@ -22,6 +22,12 @@ const userModel = new mongoose.Schema({
         type:String,
         enum:["male", "female"],
         required:true
+    },
+    status:{
+        type:String,
+        enum:["Available","Busy"],
+        required:true,
     }
+
 }, {timestamps:true});
 export const User = mongoose.model("User", userModel);
