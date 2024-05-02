@@ -36,6 +36,7 @@ export const register = async (req, res) => {
       gender,
       status,
     });
+    console.log(`New Account Created Username: ${username}`);
     return res.status(201).json({
       message: "Account created successfully.",
       success: true,
@@ -48,6 +49,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log(username);
     if (!username || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }

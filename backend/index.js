@@ -14,11 +14,13 @@ const PORT = process.env.PORT || 5000;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
-const corsOption={
-    origin:'http://localhost:3000',
-    credentials:true
-};
-app.use(cors(corsOption)); 
+// const corsOption=[{
+//     origin:'http://localhost:3000',
+//     credentials:true
+// },{
+//     origin:
+// }];
+app.use(cors()); 
 
 app.use("/api/v1/user",userRoute); 
 app.use("/api/v1/message",messageRoute);
