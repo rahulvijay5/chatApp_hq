@@ -29,11 +29,11 @@ const Sidebar = () => {
 
   const statusHandler = async () => {
     try {
-      setUser(prevUser => ({
+      setUser((prevUser) => ({
         ...prevUser,
-        status: prevUser.status === "Busy" ? "Available" : "Busy"
+        status: prevUser.status === "Busy" ? "Available" : "Busy",
       }));
-  
+
       const response = await axios.post(
         `${BASE_URL}/api/v1/user/updatestatus`,
         user,
@@ -43,7 +43,7 @@ const Sidebar = () => {
           },
         }
       );
-  
+
       console.log(response.data.user.status);
       setStatus(response.data.user.status);
     } catch (error) {
@@ -54,8 +54,8 @@ const Sidebar = () => {
   useEffect(() => {
     setUser({
       userId: authUser?._id,
-      status: "", 
-    })
+      status: "",
+    });
     const fetchUserStatus = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/api/v1/user/status`, {
@@ -63,7 +63,7 @@ const Sidebar = () => {
         });
         setStatus(response.data.status);
       } catch (error) {
-        console.error('Error fetching user status:', error);
+        console.error("Error fetching user status:", error);
       }
     };
     fetchUserStatus();
@@ -122,9 +122,14 @@ const Sidebar = () => {
           </button>
         </div>
         <div className="mt-2">
-          <button onClick={statusHandler} className="btn btn-sm">
-            {status === "Busy" ? "Make Available" : "Make Busy"}
-          </button>
+          <div
+            className="tooltip"
+            data-tip="Enables you to alter your own status."
+          >
+            <button onClick={statusHandler} className="btn btn-sm">
+              {status === "Busy" ? "Make Available" : "Make Busy"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

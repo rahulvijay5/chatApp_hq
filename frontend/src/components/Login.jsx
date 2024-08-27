@@ -23,7 +23,7 @@ const Login = () => {
         },
         withCredentials: true
       });
-      navigate("/");
+      navigate("/chat");
       console.log("User data response: ", res);
       dispatch(setAuthUser(res.data));
     } catch (error) {

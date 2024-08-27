@@ -3,6 +3,7 @@ import './App.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import HomePage from './components/HomePage';
 import Login from './components/Login';
+import LandingPage from './components/LandingPage';
 import { useEffect, useState } from 'react';
 import {useSelector,useDispatch} from "react-redux";
 import io from "socket.io-client";
@@ -13,6 +14,10 @@ import { BASE_URL } from '.';
 const router = createBrowserRouter([
   {
     path:"/",
+    element:<LandingPage/>
+  },
+  {
+    path:"/chat",
     element:<HomePage/>
   },
   {
@@ -54,7 +59,7 @@ function App() {
   },[authUser]);
 
   return (
-    <div className="p-4 h-screen flex items-center justify-center">
+    <div className="h-screen flex items-center justify-center">
       <RouterProvider router={router}/>
     </div>
 

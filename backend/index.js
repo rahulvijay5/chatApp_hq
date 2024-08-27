@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://chatapp-seven-pearl.vercel.app'],
+    origin: ['http://localhost:3000', 'https://chatapp-seven-pearl.vercel.app','http://localhost:3001'],
     credentials: true
 };
 
